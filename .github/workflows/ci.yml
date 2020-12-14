@@ -22,7 +22,7 @@ jobs:
         with:
           args: >
             -Dsonar.organization=sotam
-            -Dsonar.projectKey=collectionsheet
+            -Dsonar.projectKey=Sotam_CollectionSheet
             -Dsonar.projectVersion=${GITHUB_SHA}
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
             -Dsonar.sourceEncoding=UTF-8
