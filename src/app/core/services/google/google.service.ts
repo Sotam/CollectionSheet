@@ -1,0 +1,84 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map, mergeAll, take } from 'rxjs/operators';
+
+import { Pokemon } from '../../../shared/models/pokemon.model';
+import { Trainer } from '../../../shared/models/trainer.model';
+import { GoogleConnectorService } from '../../http/google-connector/google-connector.service';
+import { EntryPokemon } from '../../http/google-connector/models/entry-pokemon.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class GoogleService {
+
+  constructor(private googleConnector: GoogleConnectorService) { }
+
+  public getTrainer(): Observable<Trainer> {
+    return this.googleConnector.getTrainer()
+      .pipe(
+        map((t) => t.feed.entry),
+        mergeAll(),
+        take(1),
+        map((t): Trainer => ({
+          contactUri: t.gsx$contacturl.$t,
+          friendCode: t.gsx$friendcode.$t,
+          inGameName: t.gsx$ingamename.$t,
+          trainerIconUri: t.gsx$trainericonurl.$t
+        }))
+      );
+  }
+
+  public getPokemons(): Observable<Pokemon> {
+    return this.googleConnector.getPokemons()
+      .pipe(
+        map((e) => this.pokemonBuilder(e))
+      );
+  }
+
+  private pokemonBuilder(entry: EntryPokemon): Pokemon {
+    return {
+      dex: Number(entry.gsx$dexno.$t),
+      species: entry.gsx$name.$t,
+      form: entry.gsx$form.$t,
+      nickname: entry.gsx$nickname.$t,
+      gender: entry.gsx$gender.$t,
+      shiny: entry.gsx$shiny.$t === 'TRUE',
+      nature: entry.gsx$nature.$t,
+      statNature: entry.gsx$statnature.$t,
+      ability: entry.gsx$ability.$t,
+      hpiv: Number(entry.gsx$hpiv.$t),
+      atkiv: Number(entry.gsx$atkiv.$t),
+      defiv: Number(entry.gsx$defiv.$t),
+      spaiv: Number(entry.gsx$spaiv.$t),
+      spdiv: Number(entry.gsx$spdiv.$t),
+      speiv: Number(entry.gsx$speiv.$t),
+      hpht: entry.gsx$hpht.$t === 'TRUE',
+      atkht: entry.gsx$atkht.$t === 'TRUE',
+      defht: entry.gsx$defht.$t === 'TRUE',
+      spaht: entry.gsx$spaht.$t === 'TRUE',
+      spdht: entry.gsx$spdht.$t === 'TRUE',
+      speht: entry.gsx$speht.$t === 'TRUE',
+      hpev: Number(entry.gsx$hpev.$t),
+      atkev: Number(entry.gsx$atkev.$t),
+      defev: Number(entry.gsx$defev.$t),
+      spaev: Number(entry.gsx$spaev.$t),
+      spdev: Number(entry.gsx$spdev.$t),
+      speev: Number(entry.gsx$speev.$t),
+      move1: entry.gsx$move1.$t,
+      move2: entry.gsx$move2.$t,
+      move3: entry.gsx$move3.$t,
+      move4: entry.gsx$move4.$t,
+      eggMove1: entry.gsx$eggmove1.$t,
+      eggMove2: entry.gsx$eggmove2.$t,
+      eggMove3: entry.gsx$eggmove3.$t,
+      eggMove4: entry.gsx$eggmove4.$t,
+      ball: entry.gsx$ball.$t,
+      ot: entry.gsx$ot.$t,
+      tid: Number(entry.gsx$tid.$t),
+      language: entry.gsx$language.$t,
+      originGame: entry.gsx$origingame.$t,
+      notes: entry.gsx$notes.$t,
+    };
+  }
+}
