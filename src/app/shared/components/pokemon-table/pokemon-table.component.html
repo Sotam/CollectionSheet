@@ -1,0 +1,54 @@
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" colspan="2" rowspan="2">Pokémon</th>
+        <th scope="col" rowspan="2" class="text-center"><abbr title="Original Trainer">OT</abbr></th>
+        <th scope="col" rowspan="2" class="text-center">Nature</th>
+        <th scope="col" rowspan="2" class="text-center">Ability</th>
+        <th scope="col" colspan="6" class="text-center">
+          <abbr title="Individual Values">IVs</abbr> / <abbr title="Effort Values">EVs</abbr>
+        </th>
+        <th scope="col" rowspan="2" class="text-center">Hidden<br />Power</th>
+        <th scope="col" rowspan="2" class="text-center">Poké Ball</th>
+        <th scope="col" rowspan="2">Moves</th>
+      </tr>
+
+      <tr>
+        <th scope="col" class="hp text-center"><abbr title="Hit Points">HP</abbr></th>
+        <th scope="col" class="atk text-center"><abbr title="Attack">Atk</abbr></th>
+        <th scope="col" class="def text-center"><abbr title="Defense">Def</abbr></th>
+        <th scope="col" class="spa text-center"><abbr title="Special Attack">SpA</abbr></th>
+        <th scope="col" class="spd text-center"><abbr title="Special Defense">SpD</abbr></th>
+        <th scope="col" class="spe text-center"><abbr title="Speed">Spe</abbr></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pkm of pokemons | async">
+        <td>
+          <span
+            [title]="pkm.species"
+            class="menu-sprite {{ getPokemonSprite(pkm.species, pkm.form) }}"
+            [class.shiny]="pkm.shiny"
+            >{{ pkm.species }}
+          </span>
+        </td>
+        <td class="text-center vertical-middle">{{ getSpecies(pkm.species, pkm.form) }}</td>
+        <td class="text-center vertical-middle">{{ pkm.ot }}<br />({{ pkm.tid }})</td>
+        <td class="text-center vertical-middle">{{ getNatureFormat(pkm.nature, pkm.statNature) }}</td>
+        <td class="text-center vertical-middle">{{ pkm.ability }}</td>
+        <td class="text-center vertical-middle">{{ pkm.hpiv }}<br />{{ pkm.hpev }}</td>
+        <td class="text-center vertical-middle">{{ pkm.atkiv }}<br />{{ pkm.atkev }}</td>
+        <td class="text-center vertical-middle">{{ pkm.defiv }}<br />{{ pkm.defev }}</td>
+        <td class="text-center vertical-middle">{{ pkm.spaiv }}<br />{{ pkm.spaev }}</td>
+        <td class="text-center vertical-middle">{{ pkm.spdiv }}<br />{{ pkm.spdev }}</td>
+        <td class="text-center vertical-middle">{{ pkm.speiv }}<br />{{ pkm.speev }}</td>
+        <td class="text-center vertical-middle">[HP]</td>
+        <td class="text-center vertical-middle">
+          <span [title]="pkm.ball" class="item-sprite {{ getBallSprite(pkm.ball) }}">{{ pkm.ball }} </span>
+        </td>
+        <td class="vertical-middle">{{ pkm.move1 }}, {{ pkm.move2 }}, {{ pkm.move3 }}, {{ pkm.move4 }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,12 @@
+.menu-sprite,
+.item-sprite {
+  display: inline-block;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  vertical-align: middle;
+  text-indent: -999em;
+}
+
+@import '_item-sprites';
+@import '_menu-sprites';
