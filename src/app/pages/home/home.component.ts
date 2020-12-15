@@ -1,18 +1,17 @@
-import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { concatAll, filter, map, toArray } from 'rxjs/operators';
 
 import { GoogleService } from '../../core/services/google/google.service';
 import { Pokemon } from '../../shared/models/pokemon.model';
+import { TabComponent } from '../../shared/models/tab-component.model';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  tabs: TabComp[] = [];
+  tabs: TabComponent[] = [];
 
   constructor(googleService: GoogleService) {
     googleService.getTrainer()
@@ -47,9 +46,4 @@ export class HomeComponent implements OnInit {
       toArray()
     );
   }
-}
-
-export interface TabComp {
-  name: string;
-  pokemons: Observable<Pokemon[]>;
 }

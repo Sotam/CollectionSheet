@@ -5,8 +5,7 @@ import { Pokemon } from '../../models/pokemon.model';
 
 @Component({
   selector: 'app-pokemon-table',
-  templateUrl: './pokemon-table.component.html',
-  styleUrls: ['./pokemon-table.component.scss']
+  templateUrl: './pokemon-table.component.html'
 })
 export class PokemonTableComponent implements OnInit {
   @Input()
