@@ -1,5 +1,6 @@
 .menu-sprite,
-.item-sprite {
+.item-sprite,
+.type-sprite {
   display: inline-block;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -10,3 +11,4 @@
 
 @import '_item-sprites';
 @import '_menu-sprites';
+@import '_type-sprites';

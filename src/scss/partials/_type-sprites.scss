@@ -1,0 +1,60 @@
+.type-sprite {
+  width: 32px;
+  height: 32px;
+  background-image: url('./../../assets/type-sprites.png');
+}
+
+.type-sprite.bug {
+  background-position: 0px 0px;
+}
+.type-sprite.dark {
+  background-position: -32px 0px;
+}
+.type-sprite.dragon {
+  background-position: -64px 0px;
+}
+.type-sprite.electric {
+  background-position: -96px 0px;
+}
+.type-sprite.fairy {
+  background-position: 0px -32px;
+}
+.type-sprite.fighting {
+  background-position: -32px -32px;
+}
+.type-sprite.fire {
+  background-position: -64px -32px;
+}
+.type-sprite.flying {
+  background-position: -96px -32px;
+}
+.type-sprite.ghost {
+  background-position: 0px -64px;
+}
+.type-sprite.grass {
+  background-position: -32px -64px;
+}
+.type-sprite.ground {
+  background-position: -64px -64px;
+}
+.type-sprite.ice {
+  background-position: -96px -64px;
+}
+.type-sprite.normal {
+  background-position: 0px -96px;
+}
+.type-sprite.poison {
+  background-position: -32px -96px;
+}
+.type-sprite.psychic {
+  background-position: -64px -96px;
+}
+.type-sprite.rock {
+  background-position: -96px -96px;
+}
+.type-sprite.steel {
+  background-position: 0px -128px;
+}
+.type-sprite.water {
+  background-position: -32px -128px;
+}
