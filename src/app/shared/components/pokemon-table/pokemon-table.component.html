@@ -34,9 +34,11 @@
             >{{ pkm.species }}
           </span>
         </td>
-        <td class="text-center vertical-middle" [class.shiny-star]="pkm.shiny">
-          {{ getSpecies(pkm.species, pkm.form) }}
-        </td>
+        <td
+          class="text-center vertical-middle"
+          [class.shiny-star]="pkm.shiny"
+          [innerHTML]="getSpecies(pkm.species, pkm.form)"
+        ></td>
         <td class="text-center vertical-middle">
           {{ pkm.ot }}<br /><small>({{ pkm.tid }})</small>
         </td>
