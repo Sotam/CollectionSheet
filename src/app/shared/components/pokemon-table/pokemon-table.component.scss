@@ -1,0 +1,48 @@
+td.adamant ~ td.atk,
+td.brave ~ td.atk,
+td.lonely ~ td.atk,
+td.naughty ~ td.atk,
+td.bold ~ td.def,
+td.impish ~ td.def,
+td.relaxed ~ td.def,
+td.modest ~ td.spa,
+td.mild ~ td.spa,
+td.rash ~ td.spa,
+td.quiet ~ td.spa,
+td.calm ~ td.spd,
+td.careful ~ td.spd,
+td.sassy ~ td.spd,
+td.jolly ~ td.spe,
+td.timid ~ td.spe,
+td.hasty ~ td.spe,
+td.naive ~ td.spe {
+  color: #c00000;
+  font-weight: bold;
+}
+
+td.modest ~ td.atk,
+td.timid ~ td.atk,
+td.calm ~ td.atk,
+td.bold ~ td.atk,
+td.lonely ~ td.def,
+td.mild ~ td.def,
+td.hasty ~ td.def,
+td.adamant ~ td.spa,
+td.jolly ~ td.spa,
+td.impish ~ td.spa,
+td.careful ~ td.spa,
+td.naive ~ td.spd,
+td.rash ~ td.spd,
+td.naughty ~ td.spd,
+td.brave ~ td.spe,
+td.quiet ~ td.spe,
+td.sassy ~ td.spe,
+td.relaxed ~ td.spe {
+  color: #00ccff;
+  font-weight: lighter;
+}
+
+.shiny-star::before {
+  content: '★ ';
+  color: #f11;
+}

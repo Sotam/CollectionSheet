@@ -34,17 +34,29 @@
             >{{ pkm.species }}
           </span>
         </td>
-        <td class="text-center vertical-middle">{{ getSpecies(pkm.species, pkm.form) }}</td>
-        <td class="text-center vertical-middle">{{ pkm.ot }}<br />({{ pkm.tid }})</td>
-        <td class="text-center vertical-middle">{{ getNatureFormat(pkm.nature, pkm.statNature) }}</td>
+        <td class="text-center vertical-middle" [class.shiny-star]="pkm.shiny">
+          {{ getSpecies(pkm.species, pkm.form) }}
+        </td>
+        <td class="text-center vertical-middle">
+          {{ pkm.ot }}<br /><small>({{ pkm.tid }})</small>
+        </td>
+        <td
+          class="text-center vertical-middle"
+          [class]="getNatureClass(pkm.nature, pkm.statNature)"
+          [innerHTML]="getNatureFormat(pkm.nature, pkm.statNature)"
+        ></td>
         <td class="text-center vertical-middle">{{ pkm.ability }}</td>
-        <td class="text-center vertical-middle">{{ pkm.hpiv }}<br />{{ pkm.hpev }}</td>
-        <td class="text-center vertical-middle">{{ pkm.atkiv }}<br />{{ pkm.atkev }}</td>
-        <td class="text-center vertical-middle">{{ pkm.defiv }}<br />{{ pkm.defev }}</td>
-        <td class="text-center vertical-middle">{{ pkm.spaiv }}<br />{{ pkm.spaev }}</td>
-        <td class="text-center vertical-middle">{{ pkm.spdiv }}<br />{{ pkm.spdev }}</td>
-        <td class="text-center vertical-middle">{{ pkm.speiv }}<br />{{ pkm.speev }}</td>
-        <td class="text-center vertical-middle">[HP]</td>
+        <td class="text-center vertical-middle hp" [innerHTML]="getStat(pkm, pkm.hpiv, pkm.hpev, pkm.hpht)"></td>
+        <td class="text-center vertical-middle atk" [innerHTML]="getStat(pkm, pkm.atkiv, pkm.atkev, pkm.atkht)"></td>
+        <td class="text-center vertical-middle def" [innerHTML]="getStat(pkm, pkm.defiv, pkm.defev, pkm.defht)"></td>
+        <td class="text-center vertical-middle spa" [innerHTML]="getStat(pkm, pkm.spaiv, pkm.spaev, pkm.spaht)"></td>
+        <td class="text-center vertical-middle spd" [innerHTML]="getStat(pkm, pkm.spdiv, pkm.spdev, pkm.spdht)"></td>
+        <td class="text-center vertical-middle spe" [innerHTML]="getStat(pkm, pkm.speiv, pkm.speev, pkm.speht)"></td>
+        <td class="text-center vertical-middle">
+          <span [title]="getHiddenPowerType(pkm)" class=" type-sprite {{ getHiddenPowerTypeSprite(pkm) }}"
+            >{{ getHiddenPowerType(pkm) }}
+          </span>
+        </td>
         <td class="text-center vertical-middle">{{ pkm.originGame }}</td>
         <td class="text-center vertical-middle">
           <span [title]="pkm.ball" class="item-sprite {{ getBallSprite(pkm.ball) }}">{{ pkm.ball }} </span>
