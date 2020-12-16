@@ -15,10 +15,7 @@ export class HomeComponent implements OnInit {
 
   constructor(googleService: GoogleService) {
     googleService.getTrainer()
-      .subscribe((t) => {
-        console.log('Trainer:', t);
-        sessionStorage.setItem('trainer', JSON.stringify(t));
-      });
+      .subscribe(() => { });
 
     const pokemons = googleService.getPokemons()
       .pipe(

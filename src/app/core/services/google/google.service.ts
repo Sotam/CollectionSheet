@@ -1,38 +1,77 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, mergeAll, take } from 'rxjs/operators';
+import { Observable, from, of } from 'rxjs';
+import { concatAll, defaultIfEmpty, filter, map, mergeAll, mergeMap, take, tap, toArray } from 'rxjs/operators';
 
 import { Pokemon } from '../../../shared/models/pokemon.model';
 import { Trainer } from '../../../shared/models/trainer.model';
 import { GoogleConnectorService } from '../../http/google-connector/google-connector.service';
 import { EntryPokemon } from '../../http/google-connector/models/entry-pokemon.model';
+import { CacheStorageService } from '../cache-storage/cache-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GoogleService {
 
-  constructor(private googleConnector: GoogleConnectorService) { }
+  constructor(private googleConnector: GoogleConnectorService, private cacheStorage: CacheStorageService) { }
 
   public getTrainer(): Observable<Trainer> {
-    return this.googleConnector.getTrainer()
+    const key = 'trainer';
+
+    return this.cacheStorage.getItem<Trainer>(key)
       .pipe(
-        map((t) => t.feed.entry),
-        mergeAll(),
-        take(1),
-        map((t): Trainer => ({
-          contactUri: t.gsx$contacturl.$t,
-          friendCode: t.gsx$friendcode.$t,
-          inGameName: t.gsx$ingamename.$t,
-          trainerIconUri: t.gsx$trainericonurl.$t
-        }))
+        mergeMap((t) => {
+          if (t) {
+            return of(t);
+          }
+
+          const expires = new Date();
+
+          // Expires in
+          expires.setHours(expires.getHours() + 1);
+
+          const trainer = this.googleConnector.getTrainer()
+            .pipe(
+              map((t) => t.feed.entry),
+              mergeAll(),
+              take(1),
+              map((t): Trainer => ({
+                contactUri: t.gsx$contacturl.$t,
+                friendCode: t.gsx$friendcode.$t,
+                inGameName: t.gsx$ingamename.$t,
+                trainerIconUri: t.gsx$trainericonurl.$t
+              }))
+            );
+
+          return this.cacheStorage.setItem(key, expires, trainer);
+        })
       );
   }
 
   public getPokemons(): Observable<Pokemon> {
-    return this.googleConnector.getPokemons()
+    const key = 'pkm';
+
+    return this.cacheStorage.getItem<Pokemon[]>('pkm')
       .pipe(
-        map((e) => this.pokemonBuilder(e))
+        mergeMap((p) => {
+          if (p) {
+            return of(p);
+          }
+
+          const expires = new Date();
+
+          // Expires in
+          expires.setHours(expires.getHours() + 1);
+
+          const pokemons = this.googleConnector.getPokemons()
+            .pipe(
+              map((e) => this.pokemonBuilder(e)),
+              toArray()
+            );
+
+          return this.cacheStorage.setItem(key, expires, pokemons);
+        }),
+        concatAll()
       );
   }
 
