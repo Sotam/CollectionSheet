@@ -84,6 +84,10 @@ export class PokemonTableComponent implements OnInit {
 
   private getIv(iv: number, ht: boolean): string {
     if (ht) {
+      if (iv < 0) {
+        return `HT`;
+      }
+
       return `HT <small>(${iv})</small>`;
     }
 
