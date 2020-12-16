@@ -40,7 +40,7 @@ export class PokemonTableComponent implements OnInit {
       return species;
     }
 
-    return `${species}<br />${form}`;
+    return `${species}<br /><small>${form}</small>`;
   }
 
   public getNatureFormat(nature: string, statNature: string): string {
