@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, from, of } from 'rxjs';
-import { concatAll, defaultIfEmpty, filter, map, mergeAll, mergeMap, take, tap, toArray } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { concatAll, map, mergeAll, mergeMap, take, toArray } from 'rxjs/operators';
 
 import { Pokemon } from '../../../shared/models/pokemon.model';
 import { Trainer } from '../../../shared/models/trainer.model';
