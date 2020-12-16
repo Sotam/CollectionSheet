@@ -10,6 +10,7 @@
           <abbr title="Individual Values">IVs</abbr> / <abbr title="Effort Values">EVs</abbr>
         </th>
         <th scope="col" rowspan="2" class="text-center">Hidden<br />Power</th>
+        <th scope="col" rowspan="2" class="text-center">Origin<br />Game</th>
         <th scope="col" rowspan="2" class="text-center">Poké Ball</th>
         <th scope="col" rowspan="2">Moves</th>
       </tr>
@@ -44,10 +45,11 @@
         <td class="text-center vertical-middle">{{ pkm.spdiv }}<br />{{ pkm.spdev }}</td>
         <td class="text-center vertical-middle">{{ pkm.speiv }}<br />{{ pkm.speev }}</td>
         <td class="text-center vertical-middle">[HP]</td>
+        <td class="text-center vertical-middle">{{ pkm.originGame }}</td>
         <td class="text-center vertical-middle">
           <span [title]="pkm.ball" class="item-sprite {{ getBallSprite(pkm.ball) }}">{{ pkm.ball }} </span>
         </td>
-        <td class="vertical-middle">{{ pkm.move1 }}, {{ pkm.move2 }}, {{ pkm.move3 }}, {{ pkm.move4 }}</td>
+        <td class="vertical-middle" [innerHTML]="getMoves(pkm)"></td>
       </tr>
     </tbody>
   </table>
