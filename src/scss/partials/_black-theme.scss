@@ -1,0 +1,21 @@
+// Your variable overrides
+$body-bg: #1a1a1a;
+$body-color: rgba(232, 230, 227, 1);
+
+// Inverted all colors,
+// black will be white and white will be black
+$black: #fff !default;
+$gray-900: #f8f9fa !default;
+$gray-800: #e9ecef !default;
+$gray-700: #dee2e6 !default;
+$gray-600: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-400: #6c757d !default;
+$gray-300: #495057 !default;
+$gray-200: #343a40 !default;
+$gray-100: #212529 !default;
+
+$white: #000 !default;
+
+$link-color: $gray-900 !default;
+$link-hover-color: $gray-500 !default;

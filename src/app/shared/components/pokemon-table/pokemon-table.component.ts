@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Move } from '../../models/move.model';
@@ -10,14 +10,9 @@ import { Type } from '../../models/type.enum';
   templateUrl: './pokemon-table.component.html',
   styleUrls: ['./pokemon-table.component.scss']
 })
-export class PokemonTableComponent implements OnInit {
+export class PokemonTableComponent {
   @Input()
   pokemons!: Observable<Pokemon[]>;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   public getPokemonSprite(species: string, form: string): string {
     if (!form) {
