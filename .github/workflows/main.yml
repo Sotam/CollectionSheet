@@ -25,7 +25,7 @@ jobs:
         run: npm ci
       
       - name: Build solution
-        run: ng build --prod --output-path=dist --base-href="https://sotam.github.io/CollectionSheet/"
+        run: ng build --prod --output-path=dist --base-href="https://collectionsheet.wilbrink.dev/"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
