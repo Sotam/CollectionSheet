@@ -24,15 +24,21 @@ export class PokemonTableComponent implements OnInit {
       return species.toLowerCase();
     }
 
-    return `${species.toLowerCase()}-${form.toLowerCase()}`;
+    const formSprite = form
+      .toLowerCase()
+      .replace(/ /gi, '-')
+      .replace(/[^a-zA-Z0-9-]/gi, '');
+
+    return `${species.toLowerCase()}-${formSprite}`;
   }
 
   public getBallSprite(ball: string): string {
     const ballSprite = ball
+      .toLowerCase()
       .replace(/ /gi, '-')
       .replace('é', 'e');
 
-    return `${ballSprite.toLowerCase()}`;
+    return `${ballSprite}`;
   }
 
   public getSpecies(species: string, form: string): string {
