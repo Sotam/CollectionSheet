@@ -5,7 +5,7 @@ import { defaultIfEmpty, map, tap } from 'rxjs/operators';
 import { Cache } from '../../../shared/models/cache.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CacheStorageService {
 

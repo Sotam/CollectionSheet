@@ -9,7 +9,7 @@ import { EntryPokemon } from '../../http/google-connector/models/entry-pokemon.m
 import { CacheStorageService } from '../cache-storage/cache-storage.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GoogleService {
 
@@ -32,14 +32,14 @@ export class GoogleService {
 
           const trainer = this.googleConnector.getTrainer()
             .pipe(
-              map((t) => t.feed.entry),
+              map((e) => e.feed.entry),
               mergeAll(),
               take(1),
-              map((t): Trainer => ({
-                contactUri: t.gsx$contacturl.$t,
-                friendCode: t.gsx$friendcode.$t,
-                inGameName: t.gsx$ingamename.$t,
-                trainerIconUri: t.gsx$trainericonurl.$t
+              map((e): Trainer => ({
+                contactUri: e.gsx$contacturl.$t,
+                friendCode: e.gsx$friendcode.$t,
+                inGameName: e.gsx$ingamename.$t,
+                trainerIconUri: e.gsx$trainericonurl.$t,
               }))
             );
 
@@ -113,6 +113,7 @@ export class GoogleService {
       eggMove3: entry.gsx$eggmove3.$t,
       eggMove4: entry.gsx$eggmove4.$t,
       ball: entry.gsx$ball.$t,
+      heldItem: entry.gsx$helditem.$t,
       ot: entry.gsx$ot.$t,
       tid: Number(entry.gsx$tid.$t),
       language: entry.gsx$language.$t,

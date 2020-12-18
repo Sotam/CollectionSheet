@@ -46,3 +46,52 @@ td.relaxed ~ td.spe {
   content: '★ ';
   color: #f11;
 }
+
+thead th.stat {
+  border-bottom-width: 4px;
+}
+
+thead th.hp {
+  border-bottom-color: #77f296;
+}
+
+thead th.atk {
+  border-bottom-color: #f4e585;
+}
+
+thead th.def {
+  border-bottom-color: #ffb17a;
+}
+
+thead th.spa {
+  border-bottom-color: #88dee3;
+}
+
+thead th.spd {
+  border-bottom-color: #859fff;
+}
+
+thead th.spe {
+  border-bottom-color: #d880ff;
+}
+
+.up {
+  padding: 0.3125em 0.125em 0.5625em;
+}
+
+tr:hover .pulse {
+  animation: pulse 0.3s infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes pulse {
+  0% {
+    padding: 0;
+  }
+  50% {
+    padding: 0.15em;
+  }
+  100% {
+    padding: 0;
+  }
+}

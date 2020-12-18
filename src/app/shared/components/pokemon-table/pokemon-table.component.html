@@ -11,17 +11,18 @@
         </th>
         <th scope="col" rowspan="2" class="text-center">Hidden<br />Power</th>
         <th scope="col" rowspan="2" class="text-center">Origin<br />Game</th>
-        <th scope="col" rowspan="2" class="text-center">Poké Ball</th>
+        <th scope="col" rowspan="2" class="text-center">Poké<br />Ball</th>
+        <th scope="col" rowspan="2" class="text-center">Held<br />Item</th>
         <th scope="col" rowspan="2">Moves</th>
       </tr>
 
       <tr>
-        <th scope="col" class="hp text-center"><abbr title="Hit Points">HP</abbr></th>
-        <th scope="col" class="atk text-center"><abbr title="Attack">Atk</abbr></th>
-        <th scope="col" class="def text-center"><abbr title="Defense">Def</abbr></th>
-        <th scope="col" class="spa text-center"><abbr title="Special Attack">SpA</abbr></th>
-        <th scope="col" class="spd text-center"><abbr title="Special Defense">SpD</abbr></th>
-        <th scope="col" class="spe text-center"><abbr title="Speed">Spe</abbr></th>
+        <th scope="col" class="stat hp text-center"><abbr title="Hit Points">HP</abbr></th>
+        <th scope="col" class="stat atk text-center"><abbr title="Attack">Atk</abbr></th>
+        <th scope="col" class="stat def text-center"><abbr title="Defense">Def</abbr></th>
+        <th scope="col" class="stat spa text-center"><abbr title="Special Attack">SpA</abbr></th>
+        <th scope="col" class="stat spd text-center"><abbr title="Special Defense">SpD</abbr></th>
+        <th scope="col" class="stat spe text-center"><abbr title="Speed">Spe</abbr></th>
       </tr>
     </thead>
     <tbody>
@@ -29,7 +30,7 @@
         <td>
           <span
             [title]="pkm.species"
-            class="menu-sprite {{ getPokemonSprite(pkm.species, pkm.form) }}"
+            class="menu-sprite {{ getPokemonSprite(pkm.species, pkm.form) }} pulse"
             [class.shiny]="pkm.shiny"
             >{{ pkm.species }}
           </span>
@@ -61,7 +62,12 @@
         </td>
         <td class="text-center vertical-middle">{{ pkm.originGame }}</td>
         <td class="text-center vertical-middle">
-          <span [title]="pkm.ball" class="item-sprite {{ getBallSprite(pkm.ball) }}">{{ pkm.ball }} </span>
+          <span [title]="pkm.ball" class="item-sprite {{ getItemSprite(pkm.ball) }}">{{ pkm.ball }}</span>
+        </td>
+        <td class="text-center vertical-middle">
+          <span *ngIf="pkm.heldItem" [title]="pkm.heldItem" class="item-sprite {{ getItemSprite(pkm.heldItem) }}">
+            {{ pkm.heldItem }}
+          </span>
         </td>
         <td class="vertical-middle" [innerHTML]="getMoves(pkm)"></td>
       </tr>

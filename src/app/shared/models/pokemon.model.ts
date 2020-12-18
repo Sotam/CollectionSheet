@@ -35,6 +35,7 @@ export interface Pokemon {
     eggMove3: string;
     eggMove4: string;
     ball: string;
+    heldItem: string;
     ot: string;
     tid: number;
     language: string;

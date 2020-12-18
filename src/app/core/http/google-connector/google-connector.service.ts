@@ -10,7 +10,7 @@ import { Root } from './models/root.model';
 import { Tab } from './models/tab.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GoogleConnectorService {
   private baseUri = 'https://spreadsheets.google.com/feeds';

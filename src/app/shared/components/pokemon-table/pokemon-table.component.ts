@@ -8,7 +8,7 @@ import { Type } from '../../models/type.enum';
 @Component({
   selector: 'app-pokemon-table',
   templateUrl: './pokemon-table.component.html',
-  styleUrls: ['./pokemon-table.component.scss']
+  styleUrls: ['./pokemon-table.component.scss'],
 })
 export class PokemonTableComponent {
   @Input()
@@ -27,13 +27,11 @@ export class PokemonTableComponent {
     return `${species.toLowerCase()}-${formSprite}`;
   }
 
-  public getBallSprite(ball: string): string {
-    const ballSprite = ball
+  public getItemSprite(item: string): string {
+    return item
       .toLowerCase()
       .replace(/ /gi, '-')
       .replace('é', 'e');
-
-    return `${ballSprite}`;
   }
 
   public getSpecies(species: string, form: string): string {
