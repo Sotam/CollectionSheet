@@ -14,15 +14,15 @@ import { PokemonTableComponent } from './shared/components/pokemon-table/pokemon
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    PokemonTableComponent
+    PokemonTableComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

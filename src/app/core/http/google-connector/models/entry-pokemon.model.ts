@@ -37,6 +37,7 @@ export interface EntryPokemon {
     gsx$eggmove3: Content;
     gsx$eggmove4: Content;
     gsx$ball: Content;
+    gsx$helditem: Content;
     gsx$ot: Content;
     gsx$tid: Content;
     gsx$language: Content;
