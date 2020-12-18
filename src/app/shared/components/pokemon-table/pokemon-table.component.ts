@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Move } from '../../models/move.model';
@@ -10,29 +10,30 @@ import { Type } from '../../models/type.enum';
   templateUrl: './pokemon-table.component.html',
   styleUrls: ['./pokemon-table.component.scss']
 })
-export class PokemonTableComponent implements OnInit {
+export class PokemonTableComponent {
   @Input()
   pokemons!: Observable<Pokemon[]>;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   public getPokemonSprite(species: string, form: string): string {
     if (!form) {
       return species.toLowerCase();
     }
 
-    return `${species.toLowerCase()}-${form.toLowerCase()}`;
+    const formSprite = form
+      .toLowerCase()
+      .replace(/ /gi, '-')
+      .replace(/[^a-zA-Z0-9-]/gi, '');
+
+    return `${species.toLowerCase()}-${formSprite}`;
   }
 
   public getBallSprite(ball: string): string {
     const ballSprite = ball
+      .toLowerCase()
       .replace(/ /gi, '-')
       .replace('é', 'e');
 
-    return `${ballSprite.toLowerCase()}`;
+    return `${ballSprite}`;
   }
 
   public getSpecies(species: string, form: string): string {
