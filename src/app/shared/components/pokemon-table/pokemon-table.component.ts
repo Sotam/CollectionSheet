@@ -15,8 +15,13 @@ export class PokemonTableComponent {
   pokemons!: Observable<Pokemon[]>;
 
   public getPokemonSprite(species: string, form: string): string {
+    const speciesSprite = species
+      .toLowerCase()
+      .replace(/ /gi, '-')
+      .replace(/[^a-zA-Z0-9-]/gi, '');
+
     if (!form) {
-      return species.toLowerCase();
+      return speciesSprite.toLowerCase();
     }
 
     const formSprite = form
@@ -24,7 +29,7 @@ export class PokemonTableComponent {
       .replace(/ /gi, '-')
       .replace(/[^a-zA-Z0-9-]/gi, '');
 
-    return `${species.toLowerCase()}-${formSprite}`;
+    return `${speciesSprite}-${formSprite}`;
   }
 
   public getItemSprite(item: string): string {
