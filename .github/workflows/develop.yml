@@ -1,13 +1,14 @@
-name: CICD
+name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches-ignore: [ main ]
+    tags-ignore: [ '**' ]
 
   workflow_dispatch:
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,11 +27,3 @@ jobs:
       
       - name: Build solution
         run: ng build --prod --output-path=dist --base-href="https://collectionsheet.wilbrink.dev/"
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@3.7.1
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: dist
-          CLEAN: true
