@@ -9,6 +9,7 @@ Builds:
 [![CICD build](https://github.com/Sotam/CollectionSheet/workflows/CI/badge.svg)](https://github.com/Sotam/CollectionSheet/actions?query=workflow%3ACI)
 
 SonarCloud: [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Sotam_CollectionSheet&metric=alert_status)](https://sonarcloud.io/dashboard?id=Sotam_CollectionSheet)
+
 CodeCov: [![codecov](https://codecov.io/gh/Sotam/CollectionSheet/branch/main/graph/badge.svg?token=LNS0O4HMNA)](https://codecov.io/gh/Sotam/CollectionSheet)
 
 ## Development server
