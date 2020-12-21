@@ -25,11 +25,11 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/CollectionSheet'),
-      subdir: '.',
+      dir: require('path').join(__dirname, './coverage'),
       reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
+        { type: 'html', subdir: 'report-html' },
+        { type: 'text-summary' },
+        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly' },
       ]
     },
     reporters: ['progress', 'kjhtml'],
@@ -38,6 +38,12 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
+    customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-gpu']
+      }
+    },
     singleRun: false,
     restartOnFileChange: true
   });
