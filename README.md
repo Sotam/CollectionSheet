@@ -10,6 +10,8 @@ Builds:
 
 SonarCloud: [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Sotam_CollectionSheet&metric=alert_status)](https://sonarcloud.io/dashboard?id=Sotam_CollectionSheet)
 
+CodeCov: [![codecov](https://codecov.io/gh/Sotam/CollectionSheet/branch/main/graph/badge.svg?token=LNS0O4HMNA)](https://codecov.io/gh/Sotam/CollectionSheet)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
