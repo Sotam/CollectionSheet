@@ -2,8 +2,8 @@ name: CI
 
 on:
   push:
-    branches-ignore: [ main ]
-    tags-ignore: [ '**' ]
+    branches-ignore: [main]
+    tags-ignore: ['**']
 
   workflow_dispatch:
 
@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-    
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.3
         with:
@@ -24,7 +24,7 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Build solution
         run: ng build --prod --output-path=dist --base-href="https://collectionsheet.wilbrink.dev/"
 

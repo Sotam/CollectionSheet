@@ -38,7 +38,7 @@ td.brave ~ td.spe,
 td.quiet ~ td.spe,
 td.sassy ~ td.spe,
 td.relaxed ~ td.spe {
-  color: #00ccff;
+  color: #0cf;
   font-weight: lighter;
 }
 
@@ -88,9 +88,11 @@ tr:hover .pulse {
   0% {
     padding: 0;
   }
+
   50% {
     padding: 0.15em;
   }
+
   100% {
     padding: 0;
   }
