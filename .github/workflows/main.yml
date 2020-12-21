@@ -27,6 +27,16 @@ jobs:
       - name: Build solution
         run: ng build --prod --output-path=dist --base-href="https://collectionsheet.wilbrink.dev/"
 
+      - name: Test
+        run: npm test -- --configuration=ci
+
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage/report-lcovonly
+          fail_ci_if_error: true
+          verbose: true
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
