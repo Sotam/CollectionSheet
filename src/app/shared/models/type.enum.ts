@@ -16,5 +16,5 @@ export enum Type {
     Ice,
     Dragon,
     Dark,
-    Fairy
+    Fairy,
 }

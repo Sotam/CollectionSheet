@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
+## Status
+
+Builds:
+[![CICD build](https://github.com/Sotam/CollectionSheet/workflows/CICD/badge.svg)](https://github.com/Sotam/CollectionSheet/actions?query=workflow%3ACICD)
+[![CICD build](https://github.com/Sotam/CollectionSheet/workflows/CI/badge.svg)](https://github.com/Sotam/CollectionSheet/actions?query=workflow%3ACI)
+
+SonarCloud: [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Sotam_CollectionSheet&metric=alert_status)](https://sonarcloud.io/dashboard?id=Sotam_CollectionSheet)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
