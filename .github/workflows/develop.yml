@@ -29,7 +29,7 @@ jobs:
         run: ng build --prod --output-path=dist --base-href="https://collectionsheet.wilbrink.dev/"
 
       - name: Test
-        run: npm test -- --configuration=ci
+        run: npm test -- --configuration=ci --code-coverage --watch=false
 
       - uses: codecov/codecov-action@v1
         with:
